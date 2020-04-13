@@ -18,7 +18,10 @@ const fetchMeta = async url => {
 const log = str => console.log(`${new Date().toISOString()} ${str}`);
 
 module.exports = async (req, res) => {
-  log(`GET ${req.url.slice(1)}`);
-  const meta = await fetchMeta(req.url.slice(1));
-  res.json({ body: meta });
+  const { q } = req.query;
+  log(`GET ${q}`);
+  if (q) {
+    const meta = await fetchMeta(q);
+    res.json({ body: meta });
+  }
 };
