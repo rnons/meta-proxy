@@ -27,7 +27,7 @@ const server = http.createServer(async (req, res) => {
   res.end();
 });
 
-const port = 8000;
+const port = process.env.PORT || 8000;
 
 server.listen(port, () => {
   log(`Server started on ${port}`);
