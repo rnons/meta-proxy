@@ -24,7 +24,8 @@ const server = http.createServer(async (req, res) => {
   const meta = await fetchMeta(req.url.slice(1));
   res.writeHeader(200, {
     "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*"
+    "Access-Control-Allow-Origin": "*",
+    "Cache-Control": "max-age=3600"
   });
   res.write(JSON.stringify(meta));
   res.end();
