@@ -22,7 +22,10 @@ const log = str => console.log(`${new Date().toISOString()} ${str}`);
 const server = http.createServer(async (req, res) => {
   log(`GET ${req.url.slice(1)}`);
   const meta = await fetchMeta(req.url.slice(1));
-  res.writeHeader(200, { "Content-Type": "application/json" });
+  res.writeHeader(200, {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+  });
   res.write(JSON.stringify(meta));
   res.end();
 });
