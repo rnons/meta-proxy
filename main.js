@@ -5,7 +5,7 @@ const fetch = require("node-fetch");
 const metascraper = require("metascraper")([
   require("metascraper-description")(),
   require("metascraper-image")(),
-  require("metascraper-logo")(),
+  require("metascraper-logo-favicon")(),
   require("metascraper-title")(),
   require("metascraper-url")()
 ]);
