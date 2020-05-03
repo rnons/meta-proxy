@@ -1,4 +1,5 @@
 const http = require("http");
+const URL = require("url");
 
 const fetch = require("node-fetch");
 
@@ -47,7 +48,11 @@ const release = () => {
 const log = str => console.log(`${new Date().toISOString()} ${str}`);
 
 const server = http.createServer(async (req, res) => {
-  const url = req.url.slice(1);
+  const { query } = URL.parse(req.url, true);
+  const url = query && query.q;
+  if (!url) {
+    return res.end();
+  }
   log(`GET ${url}`);
   const meta = await getMeta(url);
   res.writeHeader(200, {
