@@ -16,7 +16,11 @@ const store = new Map();
 
 const fetchMeta = async url => {
   log(`fetching ${url}`);
-  const res = await fetch(url);
+  /**
+   * Use `new URL(url)` to avoid "Request path contains unescaped characters"
+   * error, see https://github.com/node-fetch/node-fetch/issues/531
+   */
+  const res = await fetch(new URL.URL(url));
   const html = await res.text();
   const metadata = await metascraper({ html, url });
   return metadata;
