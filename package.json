@@ -9,6 +9,6 @@
     "metascraper-logo-favicon": "^5.11.8",
     "metascraper-title": "^5.11.8",
     "metascraper-url": "^5.11.8",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^3.0.0-beta.7"
   }
 }
