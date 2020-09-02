@@ -22,7 +22,8 @@ const fetchMeta = async url => {
    */
   const res = await fetch(new URL.URL(url));
   const html = await res.text();
-  const metadata = await metascraper({ html, url });
+  // metascraper throws error with non-ASCII url.
+  const metadata = await metascraper({ html, url: encodeURI(url) });
   return metadata;
 };
 
